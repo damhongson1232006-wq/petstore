@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.petshop.controller.PetFormController"
+            prefWidth="600"
+            prefHeight="650"
+            style="-fx-background-color: white;">
+
+    <ScrollPane fitToWidth="true"
+                AnchorPane.topAnchor="0"
+                AnchorPane.bottomAnchor="0"
+                AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"
+                style="-fx-background-color: white; -fx-background: white;">
+
+        <VBox spacing="16">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- ===== TIÊU ĐỀ FORM ===== -->
+            <Label fx:id="lblFormTitle"
+                   text="Thêm thú cưng mới"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;"/>
+
+            <!-- ===== GRID NHẬP LIỆU ===== -->
+            <GridPane hgap="12" vgap="10">
+                <columnConstraints>
+                    <!-- Cột nhãn -->
+                    <ColumnConstraints minWidth="130" prefWidth="140" maxWidth="160" halignment="RIGHT"/>
+                    <!-- Cột nhập liệu -->
+                    <ColumnConstraints minWidth="200" hgrow="ALWAYS" halignment="LEFT"/>
+                </columnConstraints>
+
+                <!-- Hàng 0: Loài -->
+                <Label text="Loài *"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"
+                       style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="cmbSpecies"
+                          promptText="Chọn loài..."
+                          maxWidth="Infinity"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <!-- Hàng 1: Giống -->
+                <Label text="Giống *"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"
+                       style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtBreed"
+                           promptText="Nhập giống..."
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"
+                           maxWidth="Infinity"/>
+
+                <!-- Hàng 2: Tên -->
+                <Label text="Tên"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtName"
+                           promptText="Tên đặt (tuỳ chọn)"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"
+                           maxWidth="Infinity"/>
+
+                <!-- Hàng 3: Giới tính -->
+                <Label text="Giới tính"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cmbGender"
+                          maxWidth="Infinity"
+                          GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <!-- Hàng 4: Tuổi (tháng) -->
+                <Label text="Tuổi (tháng)"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Spinner fx:id="spnAge"
+                         min="0"
+                         max="240"
+                         initialValue="0"
+                         editable="true"
+                         maxWidth="Infinity"
+                         GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <!-- Hàng 5: Màu sắc -->
+                <Label text="Màu sắc"
+                       GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtColor"
+                           promptText="Nhập màu sắc..."
+                           GridPane.rowIndex="5" GridPane.columnIndex="1"
+                           maxWidth="Infinity"/>
+
+                <!-- Hàng 6: Cân nặng -->
+                <Label text="Cân nặng (kg)"
+                       GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtWeight"
+                           promptText="VD: 2.5"
+                           GridPane.rowIndex="6" GridPane.columnIndex="1"
+                           maxWidth="Infinity"/>
+
+                <!-- Hàng 7: Đã tiêm phòng -->
+                <Label text="Đã tiêm phòng"
+                       GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <CheckBox fx:id="chkVaccinated"
+                          text="Đã tiêm phòng đầy đủ"
+                          GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+                <!-- Hàng 8: Giá nhập -->
+                <Label text="Giá nhập *"
+                       GridPane.rowIndex="8" GridPane.columnIndex="0"
+                       style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtImportPrice"
+                           promptText="VD: 1500000"
+                           GridPane.rowIndex="8" GridPane.columnIndex="1"
+                           maxWidth="Infinity"/>
+
+                <!-- Hàng 9: Giá bán -->
+                <Label text="Giá bán *"
+                       GridPane.rowIndex="9" GridPane.columnIndex="0"
+                       style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtSellPrice"
+                           promptText="VD: 2000000"
+                           GridPane.rowIndex="9" GridPane.columnIndex="1"
+                           maxWidth="Infinity"/>
+
+                <!-- Hàng 10: Nhà cung cấp -->
+                <Label fx:id="lblSupplierCap" text="Nhà cung cấp"
+                       GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cmbSupplier"
+                          promptText="Chọn nhà cung cấp..."
+                          maxWidth="Infinity"
+                          GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+                <!-- Hàng 11: Ngày nhập -->
+                <Label fx:id="lblImportDateCap" text="Ngày nhập"
+                       GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpImportDate"
+                            promptText="dd/MM/yyyy"
+                            maxWidth="Infinity"
+                            GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+
+                <!-- Hàng 12: Ghi chú sức khỏe -->
+                <Label text="Ghi chú sức khỏe"
+                       GridPane.rowIndex="12" GridPane.columnIndex="0"
+                       GridPane.valignment="TOP"/>
+                <TextArea fx:id="txtHealthNote"
+                          prefRowCount="3"
+                          promptText="Ghi chú về sức khỏe, lịch tiêm phòng..."
+                          wrapText="true"
+                          GridPane.rowIndex="12" GridPane.columnIndex="1"
+                          maxWidth="Infinity"/>
+
+                <!-- Hàng 13: Hình ảnh -->
+                <Label text="Hình ảnh"
+                       GridPane.rowIndex="13" GridPane.columnIndex="0"
+                       GridPane.valignment="TOP"/>
+                <HBox spacing="12" alignment="CENTER_LEFT"
+                      GridPane.rowIndex="13" GridPane.columnIndex="1">
+                    <ImageView fx:id="imgPreview" fitWidth="110" fitHeight="110" preserveRatio="true"/>
+                    <VBox spacing="8">
+                        <Button fx:id="btnChooseImage" text="📷 Chọn ảnh..."
+                                styleClass="btn-outline" onAction="#onChooseImage"/>
+                        <Button fx:id="btnClearImage" text="Xóa ảnh"
+                                styleClass="btn-outline" onAction="#onClearImage"/>
+                        <Label fx:id="lblImageName" text="Chưa có ảnh"
+                               style="-fx-text-fill: #6c757d; -fx-font-size: 12px;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Hàng 14: Số lượng (chỉ hiện khi nhập hàng) -->
+                <Label fx:id="lblQtyCap" text="Số lượng nhập *"
+                       visible="false" managed="false"
+                       GridPane.rowIndex="14" GridPane.columnIndex="0"
+                       style="-fx-font-weight: bold;"/>
+                <Spinner fx:id="spnQty"
+                         min="1" max="100" initialValue="1"
+                         editable="true" visible="false" managed="false"
+                         maxWidth="Infinity"
+                         GridPane.rowIndex="14" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <!-- ===== NHÃN LỖI ===== -->
+            <Label fx:id="lblError"
+                   styleClass="login-error"
+                   text=""
+                   visible="false"
+                   wrapText="true"
+                   maxWidth="Infinity"
+                   style="-fx-text-fill: #dc3545; -fx-font-size: 13px;"/>
+
+            <!-- ===== NÚT HÀNH ĐỘNG ===== -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <padding>
+                    <Insets top="8" bottom="4"/>
+                </padding>
+
+                <Button text="Hủy"
+                        styleClass="btn-outline"
+                        onAction="#onCancel"
+                        style="-fx-pref-width: 100px; -fx-pref-height: 38px;"/>
+
+                <Button fx:id="btnSave"
+                        text="Lưu"
+                        styleClass="btn-primary"
+                        onAction="#onSave"
+                        defaultButton="true"
+                        style="-fx-pref-width: 100px; -fx-pref-height: 38px;"/>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+
+</AnchorPane>

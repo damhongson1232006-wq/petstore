@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petshop.controller.ServiceController"
+      stylesheets="@../css/styles.css"
+      spacing="0"
+      style="-fx-background-color: #f8f9fa;">
+
+    <!-- ===== HEADER ===== -->
+    <HBox alignment="CENTER_LEFT" spacing="12"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="16" right="24" bottom="16" left="24"/>
+        </padding>
+
+        <Label text="🛁 Dịch vụ đi kèm"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #212529;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="btnAdd"
+                text="+ Thêm dịch vụ"
+                styleClass="btn-primary"
+                onAction="#onAddService"/>
+    </HBox>
+
+    <!-- ===== FILTER BAR ===== -->
+    <HBox alignment="CENTER_LEFT" spacing="10"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="12" right="24" bottom="12" left="24"/>
+        </padding>
+
+        <TextField fx:id="txtSearch"
+                   promptText="Tìm theo tên dịch vụ..."
+                   prefWidth="260"
+                   style="-fx-pref-height: 36px;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="btnRefresh"
+                text="🔄 Làm mới"
+                onAction="#onRefresh"
+                style="-fx-pref-height: 36px;"/>
+    </HBox>
+
+    <!-- ===== TABLE ===== -->
+    <TableView fx:id="tableServices"
+               VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white;"
+               tableMenuButtonVisible="false">
+        <columns>
+            <!-- STT -->
+            <TableColumn fx:id="colStt" text="STT" prefWidth="50" style="-fx-alignment: CENTER;" sortable="false"/>
+
+            <!-- Tên dịch vụ -->
+            <TableColumn fx:id="colName" text="Tên DV" prefWidth="200"/>
+
+            <!-- Mô tả -->
+            <TableColumn fx:id="colDesc" text="Mô tả" prefWidth="250"/>
+
+            <!-- Giá -->
+            <TableColumn fx:id="colPrice" text="Đơn giá" prefWidth="140" style="-fx-alignment: CENTER_RIGHT;"/>
+
+            <!-- Hành động -->
+            <TableColumn fx:id="colAction" text="Hành động" prefWidth="140" style="-fx-alignment: CENTER;" sortable="false"/>
+        </columns>
+
+        <placeholder>
+            <Label text="Không có dữ liệu dịch vụ"
+                   style="-fx-font-size: 14px; -fx-text-fill: #6c757d;"/>
+        </placeholder>
+    </TableView>
+
+    <!-- ===== STATUS BAR ===== -->
+    <HBox alignment="CENTER_LEFT" spacing="8"
+          style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
+        <padding>
+            <Insets top="8" right="24" bottom="8" left="24"/>
+        </padding>
+
+        <Label fx:id="lblStatus"
+               text="Tổng: 0 dịch vụ"
+               style="-fx-font-size: 13px; -fx-text-fill: #6c757d;"/>
+    </HBox>
+
+</VBox>

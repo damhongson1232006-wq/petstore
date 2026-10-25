@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petshop.controller.PetController"
+      stylesheets="@../css/styles.css"
+      spacing="0"
+      style="-fx-background-color: #f8f9fa;">
+
+    <!-- ===== HEADER ===== -->
+    <HBox alignment="CENTER_LEFT" spacing="12"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="16" right="24" bottom="16" left="24"/>
+        </padding>
+
+        <Label text="🐶 Quản lý Thú cưng"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #212529;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="btnAdd"
+                text="+ Thêm thú cưng"
+                styleClass="btn-primary"
+                onAction="#onAddPet"/>
+    </HBox>
+
+    <!-- ===== FILTER BAR ===== -->
+    <HBox alignment="CENTER_LEFT" spacing="10"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="12" right="24" bottom="12" left="24"/>
+        </padding>
+
+        <TextField fx:id="txtSearch"
+                   promptText="Tìm theo mã thú, giống, tên..."
+                   prefWidth="220"
+                   style="-fx-pref-height: 36px;"/>
+
+        <ComboBox fx:id="cmbSpecies"
+                  promptText="Loài"
+                  prefWidth="130"
+                  style="-fx-pref-height: 36px;"/>
+
+        <ComboBox fx:id="cmbStatus"
+                  promptText="Trạng thái"
+                  prefWidth="140"
+                  style="-fx-pref-height: 36px;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="btnRefresh"
+                text="🔄 Làm mới"
+                onAction="#onRefresh"
+                style="-fx-pref-height: 36px;"/>
+
+        <Button fx:id="btnExport"
+                text="📊 Xuất Excel"
+                onAction="#onExport"
+                style="-fx-pref-height: 36px;"/>
+    </HBox>
+
+    <!-- ===== TABLE ===== -->
+    <TableView fx:id="tablePets"
+               VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white;"
+               tableMenuButtonVisible="false">
+        <padding>
+            <Insets top="0" right="0" bottom="0" left="0"/>
+        </padding>
+        <columns>
+            <TableColumn fx:id="colStt" text="STT" prefWidth="50" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colImage" text="Ảnh" prefWidth="70" style="-fx-alignment: CENTER;" sortable="false"/>
+            <TableColumn fx:id="colCode" text="Mã thú" prefWidth="95" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colSpecies" text="Loài" prefWidth="80" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colBreed" text="Giống" prefWidth="140"/>
+            <TableColumn fx:id="colName" text="Tên (nếu có)" prefWidth="110"/>
+            <TableColumn fx:id="colGender" text="Giới tính" prefWidth="80" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colAge" text="Tuổi" prefWidth="70" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colPrice" text="Giá bán" prefWidth="120" style="-fx-alignment: CENTER_RIGHT;"/>
+            <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="110" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colImportDate" text="Ngày nhập" prefWidth="110" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colAction" text="Hành động" prefWidth="160" style="-fx-alignment: CENTER;" sortable="false"/>
+        </columns>
+
+        <placeholder>
+            <Label text="Không có dữ liệu thú cưng"
+                   style="-fx-font-size: 14px; -fx-text-fill: #6c757d;"/>
+        </placeholder>
+    </TableView>
+
+    <!-- ===== STATUS BAR ===== -->
+    <HBox alignment="CENTER_LEFT" spacing="8"
+          style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
+        <padding>
+            <Insets top="8" right="24" bottom="8" left="24"/>
+        </padding>
+
+        <Label fx:id="lblStatus"
+               text="Tổng: 0 con thú"
+               style="-fx-font-size: 13px; -fx-text-fill: #6c757d;"/>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,347 @@
+/* ============================================================
+   Pet Shop Management — Global Stylesheet
+   Theme: AtlantaFX PrimerLight base + Custom overrides
+   ============================================================ */
+
+/* ===== ROOT VARIABLES ===== */
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 13px;
+    -color-accent-emphasis: #0969da;
+    -color-success-emphasis: #1a7f37;
+    -color-danger-emphasis: #cf222e;
+    -color-warning-emphasis: #9a6700;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    -fx-background-color: #1b1f23;
+    -fx-min-width: 220px;
+    -fx-max-width: 220px;
+    -fx-padding: 0;
+}
+
+.sidebar-header {
+    -fx-background-color: #141617;
+    -fx-padding: 20px 16px;
+    -fx-alignment: center-left;
+}
+
+.sidebar-title {
+    -fx-text-fill: #f0f6fc;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+}
+
+.sidebar-subtitle {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 11px;
+}
+
+.sidebar-menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #c9d1d9;
+    -fx-padding: 10px 16px;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+    -fx-pref-width: 220px;
+    -fx-font-size: 13px;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+
+.sidebar-menu-item:hover {
+    -fx-background-color: #30363d;
+    -fx-text-fill: #f0f6fc;
+}
+
+.sidebar-menu-item.active {
+    -fx-background-color: #388bfd22;
+    -fx-text-fill: #58a6ff;
+    -fx-border-color: transparent transparent transparent #58a6ff;
+    -fx-border-width: 0 0 0 3;
+}
+
+.sidebar-section-label {
+    -fx-text-fill: #6e7681;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 16px 16px 4px 16px;
+}
+
+/* ===== DASHBOARD KPI CARDS ===== */
+.kpi-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #d0d7de;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 2);
+}
+
+.kpi-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 8, 0, 0, 3);
+}
+
+.kpi-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #24292f;
+}
+
+.kpi-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #57606a;
+}
+
+.kpi-icon {
+    -fx-font-size: 24px;
+}
+
+.kpi-card-revenue .kpi-value   { -fx-text-fill: #0969da; }
+.kpi-card-pets .kpi-value      { -fx-text-fill: #1a7f37; }
+.kpi-card-invoice .kpi-value   { -fx-text-fill: #9a3412; }
+.kpi-card-warning .kpi-value   { -fx-text-fill: #9a6700; }
+
+/* ===== CONTENT AREA ===== */
+.content-area {
+    -fx-background-color: #f6f8fa;
+    -fx-padding: 0;
+}
+
+.page-header {
+    -fx-background-color: white;
+    -fx-padding: 16px 24px;
+    -fx-border-color: transparent transparent #d0d7de transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.page-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #24292f;
+}
+
+.page-body {
+    -fx-padding: 20px 24px;
+}
+
+/* ===== TABLE VIEWS ===== */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #d0d7de;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f6f8fa;
+    -fx-border-color: transparent transparent #d0d7de transparent;
+    -fx-font-weight: bold;
+    -fx-text-fill: #24292f;
+    -fx-padding: 8px 12px;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #ddf4ff;
+    -fx-text-fill: #0969da;
+}
+
+/* Row trạng thái SOLD */
+.row-sold {
+    -fx-opacity: 0.6;
+    -fx-background-color: #f6f8fa;
+}
+
+/* Row cảnh báo tồn kho thấp */
+.row-low-stock {
+    -fx-background-color: #fff8c5;
+}
+
+/* ===== STATUS BADGES ===== */
+.badge {
+    -fx-padding: 2px 8px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-success {
+    -fx-background-color: #dafbe1;
+    -fx-text-fill: #1a7f37;
+}
+
+.badge-danger {
+    -fx-background-color: #ffebe9;
+    -fx-text-fill: #cf222e;
+}
+
+.badge-warning {
+    -fx-background-color: #fff8c5;
+    -fx-text-fill: #9a6700;
+}
+
+.badge-info {
+    -fx-background-color: #ddf4ff;
+    -fx-text-fill: #0969da;
+}
+
+.badge-neutral {
+    -fx-background-color: #f6f8fa;
+    -fx-text-fill: #57606a;
+    -fx-border-color: #d0d7de;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    -fx-background-color: #0969da;
+    -fx-text-fill: white;
+    -fx-background-radius: 6px;
+    -fx-padding: 6px 16px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #0860ca;
+}
+
+.btn-danger {
+    -fx-background-color: #cf222e;
+    -fx-text-fill: white;
+    -fx-background-radius: 6px;
+    -fx-padding: 6px 16px;
+    -fx-cursor: hand;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #a40e26;
+}
+
+.btn-outline {
+    -fx-background-color: white;
+    -fx-text-fill: #24292f;
+    -fx-border-color: #d0d7de;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-padding: 6px 16px;
+    -fx-cursor: hand;
+}
+
+.btn-outline:hover {
+    -fx-background-color: #f3f4f6;
+}
+
+/* ===== SEARCH / FILTER BAR ===== */
+.filter-bar {
+    -fx-background-color: white;
+    -fx-padding: 12px 24px;
+    -fx-border-color: transparent transparent #d0d7de transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-spacing: 10;
+}
+
+.search-field {
+    -fx-min-width: 250px;
+    -fx-pref-height: 32px;
+}
+
+/* ===== FORM DIALOGS ===== */
+.form-label {
+    -fx-text-fill: #24292f;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-min-width: 120px;
+}
+
+.form-section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #24292f;
+    -fx-padding: 0 0 8px 0;
+    -fx-border-color: transparent transparent #d0d7de transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ===== POS / INVOICE FORM ===== */
+.pos-panel {
+    -fx-background-color: white;
+    -fx-border-color: #d0d7de;
+    -fx-border-radius: 8px;
+    -fx-padding: 16px;
+}
+
+.pos-total-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0969da;
+}
+
+.pos-section-divider {
+    -fx-background-color: #d0d7de;
+    -fx-pref-height: 1px;
+    -fx-max-height: 1px;
+}
+
+/* ===== LOGIN SCREEN ===== */
+.login-container {
+    -fx-background-color: #f6f8fa;
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-color: #d0d7de;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 32px;
+    -fx-min-width: 380px;
+    -fx-max-width: 380px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 16, 0, 0, 4);
+}
+
+.login-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #24292f;
+    -fx-alignment: center;
+}
+
+.login-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #57606a;
+    -fx-alignment: center;
+}
+
+.login-error {
+    -fx-text-fill: #cf222e;
+    -fx-font-size: 12px;
+    -fx-padding: 8px 12px;
+    -fx-background-color: #ffebe9;
+    -fx-background-radius: 6px;
+    -fx-border-color: #ffcecb;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+}
+
+/* ===== REPORT CHARTS ===== */
+.chart {
+    -fx-background-color: white;
+    -fx-border-color: #d0d7de;
+    -fx-border-radius: 6px;
+    -fx-padding: 16px;
+}
+
+/* ===== SCROLLBAR ===== */
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: #d0d7de;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #afb8c1;
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petshop.controller.InvoiceController"
+      stylesheets="@../css/styles.css"
+      spacing="0"
+      style="-fx-background-color: #f8f9fa;">
+
+    <!-- HEADER -->
+    <HBox alignment="CENTER_LEFT" spacing="12"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="16" right="24" bottom="16" left="24"/>
+        </padding>
+        <Label text="🧾 Quản lý Hóa đơn Bán hàng"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #212529;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnNewInvoice"
+                text="➕ Tạo hóa đơn mới (POS)"
+                styleClass="btn-primary"
+                onAction="#onNewInvoice"/>
+    </HBox>
+
+    <!-- FILTER BAR -->
+    <HBox alignment="CENTER_LEFT" spacing="10"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="12" right="24" bottom="12" left="24"/>
+        </padding>
+
+        <Label text="Từ ngày:"/>
+        <DatePicker fx:id="dpFrom" prefWidth="130" style="-fx-pref-height: 36px;"/>
+
+        <Label text="Đến ngày:"/>
+        <DatePicker fx:id="dpTo" prefWidth="130" style="-fx-pref-height: 36px;"/>
+
+        <TextField fx:id="txtSearch"
+                   promptText="Tìm theo mã HĐ, tên khách, SĐT..."
+                   prefWidth="250"
+                   style="-fx-pref-height: 36px;"/>
+
+        <Button text="🔍 Lọc"
+                styleClass="btn-outline"
+                onAction="#loadData"
+                style="-fx-pref-height: 36px;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="btnRefresh"
+                text="🔄 Làm mới"
+                onAction="#onRefresh"
+                style="-fx-pref-height: 36px;"/>
+    </HBox>
+
+    <!-- TABLE -->
+    <TableView fx:id="tableInvoices"
+               VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white;">
+        <columns>
+            <TableColumn fx:id="colCode"     text="Mã HĐ"        prefWidth="140" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colDate"     text="Ngày lập"      prefWidth="130" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colCustomer" text="Khách hàng"    prefWidth="180"/>
+            <TableColumn fx:id="colPhone"    text="Số điện thoại" prefWidth="120" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colSubtotal" text="Tổng tiền hàng" prefWidth="130" style="-fx-alignment: CENTER_RIGHT;"/>
+            <TableColumn fx:id="colDiscount" text="Giảm giá"      prefWidth="100" style="-fx-alignment: CENTER_RIGHT;"/>
+            <TableColumn fx:id="colTotal"    text="Thực thu"      prefWidth="130" style="-fx-alignment: CENTER_RIGHT; -fx-font-weight: bold;"/>
+            <TableColumn fx:id="colPayment"  text="PTTT"          prefWidth="110" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colStaff"    text="Thu ngân"      prefWidth="130"/>
+            <TableColumn fx:id="colStatus"   text="Trạng thái"    prefWidth="110" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colAction"   text="Hành động"     prefWidth="190" style="-fx-alignment: CENTER;" sortable="false"/>
+        </columns>
+    </TableView>
+
+    <!-- STATUS BAR -->
+    <HBox alignment="CENTER_LEFT" spacing="16"
+          style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
+        <padding>
+            <Insets top="8" right="24" bottom="8" left="24"/>
+        </padding>
+        <Label fx:id="lblStatus" text="Tổng: 0 hóa đơn" style="-fx-font-size: 13px; -fx-text-fill: #6c757d;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblTotalRevenue" text="Tổng doanh thu: 0 đ" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #0969da;"/>
+    </HBox>
+
+</VBox>

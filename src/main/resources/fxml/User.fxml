@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petshop.controller.UserController"
+      stylesheets="@../css/styles.css"
+      spacing="0"
+      style="-fx-background-color: #f8f9fa;">
+
+    <!-- HEADER -->
+    <HBox alignment="CENTER_LEFT" spacing="12"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="16" right="24" bottom="16" left="24"/>
+        </padding>
+        <Label text="⚙️ Quản lý Người dùng &amp; Phân quyền"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #212529;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Thêm tài khoản mới"
+                styleClass="btn-primary"
+                onAction="#onAddUser"/>
+    </HBox>
+
+    <!-- FILTER BAR -->
+    <HBox alignment="CENTER_LEFT" spacing="10"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="12" right="24" bottom="12" left="24"/>
+        </padding>
+
+        <TextField fx:id="txtSearch"
+                   promptText="Tìm theo tên đăng nhập, họ tên..."
+                   prefWidth="280"
+                   style="-fx-pref-height: 36px;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="🔄 Làm mới"
+                styleClass="btn-outline"
+                onAction="#loadData"
+                style="-fx-pref-height: 36px;"/>
+    </HBox>
+
+    <!-- TABLE -->
+    <TableView fx:id="tableUsers"
+               VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white;">
+        <columns>
+            <TableColumn fx:id="colId"       text="ID"            prefWidth="60"  style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colUsername" text="Tên đăng nhập" prefWidth="150"/>
+            <TableColumn fx:id="colFullName" text="Họ và tên"     prefWidth="220"/>
+            <TableColumn fx:id="colRole"     text="Vai trò"       prefWidth="120" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colStatus"   text="Trạng thái"    prefWidth="130" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colAction"   text="Hành động"     prefWidth="180" style="-fx-alignment: CENTER;" sortable="false"/>
+        </columns>
+    </TableView>
+
+    <!-- STATUS BAR -->
+    <HBox alignment="CENTER_LEFT" spacing="8"
+          style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
+        <padding>
+            <Insets top="8" right="24" bottom="8" left="24"/>
+        </padding>
+        <Label fx:id="lblStatus" text="Tổng: 0 tài khoản" style="-fx-font-size: 13px; -fx-text-fill: #6c757d;"/>
+    </HBox>
+
+</VBox>

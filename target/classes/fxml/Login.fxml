@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.petshop.controller.LoginController"
+           styleClass="login-container"
+           stylesheets="@../css/styles.css">
+
+    <VBox alignment="CENTER" spacing="0">
+        <!-- Logo / Header -->
+        <VBox alignment="CENTER" spacing="8" style="-fx-padding: 0 0 32 0;">
+            <Label text="🐾" style="-fx-font-size: 48px;"/>
+            <Label text="Quản lý Cửa hàng Thú cưng" styleClass="login-title"/>
+            <Label text="Vui lòng đăng nhập để tiếp tục" styleClass="login-subtitle"/>
+        </VBox>
+
+        <!-- Login Card -->
+        <VBox styleClass="login-card" spacing="16">
+            <!-- Error message (hidden by default) -->
+            <Label fx:id="lblError" styleClass="login-error"
+                   text="Tên đăng nhập hoặc mật khẩu không đúng."
+                   wrapText="true" visible="false" managed="false"/>
+
+            <!-- Username -->
+            <VBox spacing="6">
+                <Label text="Tên đăng nhập" styleClass="form-label"/>
+                <TextField fx:id="txtUsername"
+                           promptText="Nhập tên đăng nhập..."
+                           prefHeight="36"
+                           onKeyPressed="#onKeyPressed"/>
+            </VBox>
+
+            <!-- Password -->
+            <VBox spacing="6">
+                <Label text="Mật khẩu" styleClass="form-label"/>
+                <PasswordField fx:id="txtPassword"
+                              promptText="Nhập mật khẩu..."
+                              prefHeight="36"
+                              onKeyPressed="#onKeyPressed"/>
+            </VBox>
+
+            <!-- Login Button -->
+            <VBox spacing="8" style="-fx-padding: 8 0 0 0;">
+                <Button fx:id="btnLogin"
+                        text="Đăng nhập"
+                        styleClass="btn-primary"
+                        prefWidth="Infinity"
+                        prefHeight="40"
+                        onAction="#onLogin"
+                        defaultButton="true"/>
+
+                <!-- Loading indicator -->
+                <ProgressBar fx:id="progressBar" prefWidth="Infinity"
+                             visible="false" managed="false"/>
+            </VBox>
+        </VBox>
+
+        <!-- Footer -->
+        <Label text="Pet Shop Manager v1.0.0"
+               style="-fx-text-fill: #afb8c1; -fx-font-size: 11px; -fx-padding: 24 0 0 0;"/>
+    </VBox>
+
+</StackPane>

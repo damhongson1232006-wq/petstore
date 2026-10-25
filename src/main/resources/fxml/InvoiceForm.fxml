@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petshop.controller.InvoiceFormController"
+      stylesheets="@../css/styles.css"
+      spacing="0"
+      prefWidth="1100" prefHeight="720"
+      style="-fx-background-color: #f8f9fa;">
+
+    <!-- HEADER -->
+    <HBox alignment="CENTER_LEFT" spacing="12"
+          style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+        <padding>
+            <Insets top="14" right="20" bottom="14" left="20"/>
+        </padding>
+        <Label text="🛒 Bán hàng / Tạo hóa đơn mới (POS)"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #212529;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Quay lại danh sách"
+                styleClass="btn-outline"
+                onAction="#onBack"/>
+    </HBox>
+
+    <!-- MAIN BODY: SPLIT LEFT & RIGHT -->
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="16" right="16" bottom="16" left="16"/>
+        </padding>
+
+        <!-- LEFT PANE: CATALOG (60%) -->
+        <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="pos-panel">
+            <Label text="DANH MỤC HÀNG HÓA &amp; DỊCH VỤ" styleClass="form-section-title"/>
+
+            <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+                <!-- TAB 1: THÚ CƯNG -->
+                <Tab text="🐶 Thú cưng có sẵn">
+                    <VBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                        <TextField fx:id="txtSearchPet" promptText="🔍 Tìm kiếm theo giống, tên..." style="-fx-pref-height: 32px;"/>
+                        <TableView fx:id="tablePets" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colPetImage" text="Ảnh" prefWidth="60" style="-fx-alignment: CENTER;" sortable="false"/>
+                                <TableColumn fx:id="colPetCode" text="Mã thú" prefWidth="90" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colPetBreed" text="Giống" prefWidth="130"/>
+                                <TableColumn fx:id="colPetName"  text="Tên (nếu có)" prefWidth="100"/>
+                                <TableColumn fx:id="colPetGender" text="Giới tính" prefWidth="75" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colPetAge"   text="Tuổi" prefWidth="70" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colPetPrice" text="Giá bán" prefWidth="120" style="-fx-alignment: CENTER_RIGHT;"/>
+                                <TableColumn fx:id="colPetAction" text="Chọn" prefWidth="80" style="-fx-alignment: CENTER;" sortable="false"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <!-- TAB 2: PHỤ KIỆN -->
+                <Tab text="🎒 Phụ kiện / Thức ăn">
+                    <VBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                        <TextField fx:id="txtSearchAcc" promptText="🔍 Tìm phụ kiện..." style="-fx-pref-height: 32px;"/>
+                        <TableView fx:id="tableAccessories" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colAccName"  text="Tên phụ kiện" prefWidth="180"/>
+                                <TableColumn fx:id="colAccUnit"  text="ĐVT" prefWidth="60" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colAccQty"   text="Tồn / Bán được" prefWidth="115" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colAccPrice" text="Giá bán" prefWidth="120" style="-fx-alignment: CENTER_RIGHT;"/>
+                                <TableColumn fx:id="colAccAction" text="Chọn" prefWidth="80" style="-fx-alignment: CENTER;" sortable="false"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <!-- TAB 3: DỊCH VỤ -->
+                <Tab text="🛁 Dịch vụ">
+                    <VBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                        <TableView fx:id="tableServices" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colSvcName"  text="Tên dịch vụ" prefWidth="200"/>
+                                <TableColumn fx:id="colSvcPrice" text="Đơn giá" prefWidth="120" style="-fx-alignment: CENTER_RIGHT;"/>
+                                <TableColumn fx:id="colSvcAction" text="Chọn" prefWidth="80" style="-fx-alignment: CENTER;" sortable="false"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+
+        <!-- RIGHT PANE: CART & CHECKOUT (40%) -->
+        <VBox prefWidth="440" spacing="12" styleClass="pos-panel">
+            <Label text="GIỎ HÀNG THANH TOÁN" styleClass="form-section-title"/>
+
+            <!-- Khách hàng -->
+            <VBox spacing="6">
+                <HBox alignment="CENTER_LEFT" spacing="8">
+                    <Label text="Khách hàng:" styleClass="form-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="+ Khách mới" styleClass="btn-outline" onAction="#onQuickAddCustomer" style="-fx-font-size: 11px; -fx-padding: 2 8;"/>
+                </HBox>
+                <ComboBox fx:id="cmbCustomer" promptText="Chọn khách hàng hoặc để trống (Khách lẻ)" maxWidth="Infinity" style="-fx-pref-height: 34px;"/>
+            </VBox>
+
+            <!-- Table Giỏ hàng -->
+            <TableView fx:id="tableCart" VBox.vgrow="ALWAYS" prefHeight="220">
+                <columns>
+                    <TableColumn fx:id="colCartName"     text="Mặt hàng"   prefWidth="160"/>
+                    <TableColumn fx:id="colCartQty"      text="SL"         prefWidth="55"  style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colCartSubtotal" text="Thành tiền" prefWidth="120" style="-fx-alignment: CENTER_RIGHT;"/>
+                    <TableColumn fx:id="colCartAction"   text="Xóa"        prefWidth="50"  style="-fx-alignment: CENTER;" sortable="false"/>
+                </columns>
+            </TableView>
+
+            <!-- Thanh toán info -->
+            <VBox spacing="8" style="-fx-background-color: #f6f8fa; -fx-padding: 12; -fx-background-radius: 6;">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Tổng tiền hàng:"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblSubtotal" text="0 đ" style="-fx-font-weight: bold;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="8">
+                    <Label text="Giảm giá (VNĐ):"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <TextField fx:id="txtDiscount" text="0" prefWidth="120" alignment="CENTER_RIGHT"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Phương thức TT:"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <RadioButton fx:id="rbCash" text="Tiền mặt" selected="true"/>
+                    <RadioButton fx:id="rbTransfer" text="Chuyển khoản / QR" style="-fx-padding: 0 0 0 10;"/>
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="KHÁCH PHẢI TRẢ:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotalAmount" text="0 đ" styleClass="pos-total-label"/>
+                </HBox>
+            </VBox>
+
+            <!-- Ghi chú -->
+            <TextField fx:id="txtNote" promptText="Ghi chú đơn hàng (tuỳ chọn)..." style="-fx-pref-height: 32px;"/>
+
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="🗑️ Xóa giỏ" styleClass="btn-outline" onAction="#onClearCart"/>
+                <Button fx:id="btnCheckout" text="🖨️ Thanh toán &amp; In HĐ" styleClass="btn-primary" onAction="#onCheckout" HBox.hgrow="ALWAYS" maxWidth="Infinity" style="-fx-pref-height: 42px; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+</VBox>
